@@ -21,6 +21,7 @@ const NewsItem = ({ title, img }) => {
                 flexDirection: "row",
                 borderBottomColor: "grey",
                 borderBottomWidth: 0.5,
+                borderRadius:10
             }}
         >
             <Image
