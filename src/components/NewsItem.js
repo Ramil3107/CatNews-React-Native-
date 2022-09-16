@@ -45,7 +45,7 @@ const NewsItem = ({ title, img, date }) => {
     const truncateDate = (str) => {
         const date = str.substring(0, 10)
         const time = str.substring(11,16)
-        return date + " " + time
+        return date + " " + "at" + " " + time
     }
 
     return (

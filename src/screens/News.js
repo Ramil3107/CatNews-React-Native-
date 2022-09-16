@@ -28,6 +28,16 @@ const News = ({ navigation }) => {
         setLoading(false)
     }
 
+    const sortByDate = (array) => {
+        let data = array.sort(function (a, b) {
+            var c = new Date(a.date);
+            var d = new Date(b.date);
+            return d - c;
+        })
+
+        return data
+    }
+
     useEffect(() => {
         getNews()
     }, [])
@@ -47,7 +57,7 @@ const News = ({ navigation }) => {
                                 onRefresh={getNews}
                             />
                         }
-                        data={news}
+                        data={sortByDate(news)}
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => navigation.navigate("Post")}>
                                 <NewsItem
