@@ -1,12 +1,20 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { FlatList } from "react-native-gesture-handler"
 import NewsItem from "../components/NewsItem"
 
 
 
 const News = ({ navigation }) => {
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center"
+        }
+    })
 
     const [news, setNews] = useState()
     const [loading, setLoading] = useState(false)
@@ -27,11 +35,7 @@ const News = ({ navigation }) => {
         <>
             {
                 loading ?
-                    <View style={{
-                        flex: 1,
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}>
+                    <View style={styles.container}>
                         <ActivityIndicator size="large" color="#0000ff" />
                     </View>
                     :
