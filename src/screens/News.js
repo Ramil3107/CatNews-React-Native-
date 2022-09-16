@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, RefreshControl, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { FlatList } from "react-native-gesture-handler"
 import NewsItem from "../components/NewsItem"
 
@@ -18,6 +18,7 @@ const News = ({ navigation }) => {
 
     const [news, setNews] = useState()
     const [loading, setLoading] = useState(false)
+    const [refreshing, setRefreshing] = useState(false)
 
     const getNews = async () => {
         setLoading(true)
@@ -40,12 +41,19 @@ const News = ({ navigation }) => {
                     </View>
                     :
                     <FlatList
+                        refreshControl={
+                            <RefreshControl
+                                refreshing={refreshing}
+                                onRefresh={getNews}
+                            />
+                        }
                         data={news}
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => navigation.navigate("Post")}>
                                 <NewsItem
                                     title={item.title}
                                     img={item.img}
+                                    date={item.date}
                                 />
                             </TouchableOpacity>
                         )}

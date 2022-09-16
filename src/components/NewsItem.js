@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler"
 
 
 
-const NewsItem = ({ title, img }) => {
+const NewsItem = ({ title, img, date }) => {
 
     const styles = StyleSheet.create({
         container: {
@@ -13,7 +13,7 @@ const NewsItem = ({ title, img }) => {
             borderBottomColor: "grey",
             borderBottomWidth: 0.5,
             borderRadius: 10,
-            height:100
+            height: 100
         },
         img: {
             width: 70,
@@ -39,8 +39,13 @@ const NewsItem = ({ title, img }) => {
         if (str.length > 10) {
             return str.substring(0, 50) + "..."
         }
-
         return str
+    }
+
+    const truncateDate = (str) => {
+        const date = str.substring(0, 10)
+        const time = str.substring(11,16)
+        return date + " " + time
     }
 
     return (
@@ -57,7 +62,7 @@ const NewsItem = ({ title, img }) => {
                     {truncateTitle(title)}
                 </Text>
                 <Text style={styles.date}>
-                    31/07/1997
+                    {truncateDate(date)}
                 </Text>
             </View>
 
