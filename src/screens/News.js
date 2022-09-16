@@ -59,7 +59,14 @@ const News = ({ navigation }) => {
                         }
                         data={sortByDate(news)}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => navigation.navigate("Post")}>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate("Post",
+                                    {
+                                        title: item.title,
+                                        img: item.img,
+                                        date: item.date,
+                                        news: item.news,
+                                    })}>
                                 <NewsItem
                                     title={item.title}
                                     img={item.img}

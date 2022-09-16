@@ -1,9 +1,11 @@
+import axios from "axios"
+import { useState } from "react"
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native"
 
 
 
 
-const Post = () => {
+const Post = ({ route }) => {
 
     const styles = StyleSheet.create({
         img: {
@@ -32,30 +34,32 @@ const Post = () => {
 
         },
         news: {
-            marginHorizontal:15,
-            marginVertical:20,
-            fontSize:15
+            marginHorizontal: 15,
+            marginVertical: 20,
+            fontSize: 15
         }
     })
+
+    const { title, news, img, date } = route.params;
+    const [post, setPost] = useState()
+    const [loading, setLoading] = useState(false)
 
     return (
         <ScrollView>
             <View style={styles.imgContainer}>
                 <Image
                     style={styles.img}
-                    source={{ uri: "https://loremflickr.com/cache/resized/3935_15609374646_072786e779_c_640_480_nofilter.jpg" }}
+                    source={{ uri: img }}
                 />
             </View>
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>
-                    Necessitatibus illum et rerum est facilis voluptas asperiores sint ratione.
+                    {title}
                 </Text>
             </View>
             <View style={styles.newsContainer}>
                 <Text style={styles.news}>
-                    Unde velit et. Qui rerum tempore et odit et dolorum odio quidem quia. Enim dolore saepe sed corporis. Molestiae quibusdam doloribus similique ipsa vel. Qui reiciendis dolore maxime molestiae sed quas qui aliquam. Sit ipsa quos aliquam deleniti. Quo eaque qui id voluptatem voluptatibus et expedita sint voluptatem. Commodi laudantium quia. Quos optio ad aliquam doloremque veritatis consectetur et nihil quis. Velit necessitatibus sit aut qui repudiandae. Ut suscipit aut sit. Praesentium exercitationem eveniet est ea necessitatibus est et rerum. Ut quo et harum.
-                    Unde velit et. Qui rerum tempore et odit et dolorum odio quidem quia. Enim dolore saepe sed corporis. Molestiae quibusdam doloribus similique ipsa vel. Qui reiciendis dolore maxime molestiae sed quas qui aliquam. Sit ipsa quos aliquam deleniti. Quo eaque qui id voluptatem voluptatibus et expedita sint voluptatem. Commodi laudantium quia. Quos optio ad aliquam doloremque veritatis consectetur et nihil quis. Velit necessitatibus sit aut qui repudiandae. Ut suscipit aut sit. Praesentium exercitationem eveniet est ea necessitatibus est et rerum. Ut quo et harum.
-                    Unde velit et. Qui rerum tempore et odit et dolorum odio quidem quia. Enim dolore saepe sed corporis. Molestiae quibusdam doloribus similique ipsa vel. Qui reiciendis dolore maxime molestiae sed quas qui aliquam. Sit ipsa quos aliquam deleniti. Quo eaque qui id voluptatem voluptatibus et expedita sint voluptatem. Commodi laudantium quia. Quos optio ad aliquam doloremque veritatis consectetur et nihil quis. Velit necessitatibus sit aut qui repudiandae. Ut suscipit aut sit. Praesentium exercitationem eveniet est ea necessitatibus est et rerum. Ut quo et harum.
+                    {news}
                 </Text>
             </View>
         </ScrollView>
