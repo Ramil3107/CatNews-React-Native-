@@ -12,8 +12,8 @@ const Navigation = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="News" component={News} options={{ title: "News" }} />
-                <Stack.Screen name="Post" component={Post} options={{ title: "Post" }} />
+                <Stack.Screen name="News" component={News} options={{ title: "Cat News" }} />
+                <Stack.Screen name="Post" component={Post} options={{ title: "Meow Post" }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
