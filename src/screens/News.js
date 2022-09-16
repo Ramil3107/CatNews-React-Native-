@@ -6,7 +6,7 @@ import NewsItem from "../components/NewsItem"
 
 
 
-const News = () => {
+const News = ({ navigation }) => {
 
     const [news, setNews] = useState()
     const [loading, setLoading] = useState(false)
@@ -27,15 +27,22 @@ const News = () => {
         <>
             {
                 loading ?
-                    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                    <View style={{
+                        flex: 1,
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}>
                         <ActivityIndicator size="large" color="#0000ff" />
                     </View>
                     :
                     <FlatList
                         data={news}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => console.log(item.id)}>
-                                <NewsItem title={item.title} img={item.img} />
+                            <TouchableOpacity onPress={() => navigation.navigate("Post")}>
+                                <NewsItem
+                                    title={item.title}
+                                    img={item.img}
+                                />
                             </TouchableOpacity>
                         )}
                         keyExtractor={item => item.id}
