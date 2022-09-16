@@ -29,7 +29,7 @@ const News = ({ navigation }) => {
     }
 
     const sortByDate = (array) => {
-        let data = array.sort(function (a, b) {
+        let data = array?.sort(function (a, b) {
             var c = new Date(a.date);
             var d = new Date(b.date);
             return d - c;
